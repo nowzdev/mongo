@@ -6,11 +6,10 @@ MongoClient.connect(url,(err,db)=>{
     return console.log("Cannot connect To database");
   }
   var users=db.collection("users");
-  users.find({_id:1,username:"saminowz",password:"pass"},(err,res)=>{
-    if(err){
-      return console.log(err)
-    }
+  users.findOneAndDelete({useranme:"saminowz"}).then((res)=>{
     console.log(res)
+  },(err)=>{
+    console.log(err)
   })
 
 })
